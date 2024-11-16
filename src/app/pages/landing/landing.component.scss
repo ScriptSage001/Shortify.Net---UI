@@ -1,0 +1,167 @@
+@import '../../../styles.scss';
+
+.landing-page {
+  background-color: $background-color;
+  color: $secondary-color;
+  min-height: 100vh;
+
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 3rem;
+    color: $background-color;
+    background-color: $secondary-color;
+
+    .logo {
+      //font-size: 2rem;
+      //font-weight: 800;
+
+      img {
+        content: url($logo);
+        max-height: 8vh;
+      }
+    }
+
+    nav {
+      ul {
+        display: flex;
+        list-style: none;
+        gap: 1.5rem;
+        font-size: 1.1rem;
+
+        li {
+          a {
+            color: $background-color;
+            text-decoration: none;
+
+            &:hover {
+              color: $primary-hover-color;
+            }
+          }
+        }
+      }
+    }
+
+    .auth-buttons {
+      display: flex;
+      gap: 1rem;
+
+      .btn-link,
+      .btn-signup {
+        background-color: transparent;
+        border: none;
+        color: $background-color;
+        cursor: pointer;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        font-size: 1.1rem;
+
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.1);
+        }
+      }
+
+      .btn-signup {
+        background-color: $accent-color;
+        color: $secondary-color;
+        font-weight: 600;
+
+        &:hover {
+          background-color: $accent-hover-color;
+        }
+      }
+    }
+  }
+
+  .main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 3rem;
+
+    .hero-text {
+      max-width: 50vw;
+      margin-bottom: 2rem;
+
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        font-weight: 800;
+      }
+
+      p {
+        font-size: 1.3rem;
+        color: $secondary-color;
+      }
+    }
+
+    // .actions {
+    //   display: flex;
+    //   gap: 1rem;
+    //   margin-bottom: 2rem;
+
+    //   .btn-action {
+    //     background-color: $secondary-color;
+    //     color: $primary-color;
+    //     border: none;
+    //     padding: 0.75rem 1.5rem;
+    //     border-radius: 5px;
+    //     cursor: pointer;
+    //     &:hover {
+    //       background-color: lighten($secondary-color, 10%);
+    //     }
+    //   }
+    // }
+
+    .shorten-link-card {
+      background-color: $card-background-color;
+      color: $text-color;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+      max-width: 50vw;
+      width: 100%;
+      text-align: center;
+
+      h2 {
+        margin: 0rem;
+        margin-bottom: 1.5rem;
+        font-size: 2rem;
+      }
+
+      input {
+        width: 95%;
+        padding: 0.75rem;
+        margin-bottom: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      .btn-get-link {
+        background-color: $accent-color;
+        color: $background-color;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+        font-size: 1rem;
+        font-weight: bold;
+
+        &:hover {
+          background-color: $accent-hover-color;
+        }
+      }
+    }
+
+    .free-plan-info {
+      margin-top: 2rem;
+
+      p {
+        margin-bottom: 0.5rem;
+      }
+    }
+  }
+}

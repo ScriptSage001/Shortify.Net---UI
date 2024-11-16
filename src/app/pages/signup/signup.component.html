@@ -1,0 +1,77 @@
+<div class="signup-page">
+    <header class="navbar">
+        <div class="logo" (click)="navigateToLanding()">
+            <!-- <span>Shortify.NET</span> -->
+            <img alt="Shortify.NET">
+        </div>
+        <div class="signin-option" *ngIf="!signupSuccess">
+            <p>Already have an account? <a (click)="navigateToSignIn()" class="signin-link">Sign In</a></p>
+        </div>
+    </header>
+    <div class="signup-container" *ngIf="!signupSuccess">
+        <h2>Sign Up and Join Shortify.NET</h2>
+
+        <!-- Step 1: Email Input for Sending OTP -->
+        <div *ngIf="!otpSent && !otpVerified">
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Enter your email" [(ngModel)]="email" required />
+            </div>
+            <button class="send-otp-button" (click)="sendOTP()">Send OTP</button>
+        </div>
+
+        <!-- Step 2: OTP Input for Verification -->
+        <div *ngIf="otpSent && !otpVerified">
+            <div class="input-group">
+                <label for="otp">Enter OTP</label>
+                <input type="text" id="otp" placeholder="Enter the OTP sent to your email" [(ngModel)]="otp" required />
+            </div>
+            <button class="verify-otp-button" (click)="verifyOTP()">Verify OTP</button>
+
+            <!-- Timer for Resend OTP -->
+            <div class="otp-timer" *ngIf="resendTimer > 0">
+                Resend available in {{ resendTimer }} seconds
+            </div>
+            <button *ngIf="resendTimer <= 0" (click)="sendOTP()" class="resend-otp-button">Resend OTP</button>
+        </div>
+
+        <!-- Step 3: User Details Form (Username, Password, Confirm Password) -->
+        <div *ngIf="otpVerified">
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" [value]="email" disabled />
+            </div>
+
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Enter your username" [(ngModel)]="username" required />
+            </div>
+
+            <div class="input-group">
+                <label for="password">Password</label>
+                <div class="password-wrapper">
+                    <input [type]="showPassword ? 'text' : 'password'" id="password" placeholder="Enter your password"
+                        [(ngModel)]="password" required />
+                    <button type="button" class="toggle-password" (click)="togglePasswordVisibility()">
+                        <fa-icon [icon]="showPassword ? 'eye-slash' : 'eye'"></fa-icon>
+                    </button>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" placeholder="Re-enter your password"
+                    [(ngModel)]="confirmPassword" required />
+            </div>
+
+            <button class="signup-button" (click)="signup()">Sign Up</button>
+        </div>
+    </div>
+    <!-- Success Interface -->
+    <div class="signup-success-page" *ngIf="signupSuccess">
+        <h2>Welcome to Shortify.NET,&nbsp;<span>{{ username }}</span>&nbsp;!</h2>
+        <p>Your registration is successful.</p>
+        <p>You will be redirected to the dashboard in 10 seconds.</p>
+        <p>If you are not redirected automatically, <a (click)="navigateToDashboard()">click here</a>.</p>
+    </div>
+</div>

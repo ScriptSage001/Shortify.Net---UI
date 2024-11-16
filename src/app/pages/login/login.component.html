@@ -1,0 +1,43 @@
+<div class="login-page">
+    <header class="navbar">
+        <div class="logo" (click)="navigateToLanding()">
+            <!-- <span>Shortify.NET</span> -->
+            <img alt="Shortify.NET">
+        </div>
+    </header>
+    <div class="login-container">
+        <div class="login-box">
+            <h1 class="login-heading">Log in and start sharing</h1>
+
+            <form class="login-form">
+                <div class="input-group">
+                    <label for="username">Email or UserName</label>
+                    <input type="text" id="username" placeholder="Enter your email or username" [(ngModel)]="username"
+                        required />
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <div class="password-wrapper">
+                        <input [type]="showPassword ? 'text' : 'password'" id="password"
+                            placeholder="Enter your password" [(ngModel)]="password" required />
+                        <button type="button" class="toggle-password" (click)="togglePasswordVisibility()">
+                            <fa-icon [icon]="showPassword ? 'eye-slash' : 'eye'"></fa-icon>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="additional-options">
+                    <a class="forgot-password" href="#">Forgot password?</a>
+                    <a class="login-otp" href="#">Login with OTP</a>
+                </div>
+
+                <button class="login-button" type="submit">Log In</button>
+            </form>
+
+            <div class="signup-option">
+                <p>Don't have an account? <a (click)="navigateToSignUp()" class="signup-link">Sign up</a></p>
+            </div>
+        </div>
+    </div>
+</div>
