@@ -1,0 +1,42 @@
+<div class="login-otp-page">
+    <header class="navbar">
+        <div class="logo" (click)="navigateToLanding()">
+            <!-- <span>Shortify.NET</span> -->
+            <img alt="Shortify.NET">
+        </div>
+    </header>
+    <div class="login-otp-container" *ngIf="!loginSuccess">
+        <h2>Login with OTP</h2>
+
+        <!-- Step 1: Email Input for Sending OTP -->
+        <div *ngIf="!otpSent && !otpVerified">
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Enter your email" [(ngModel)]="email" required />
+            </div>
+            <button class="send-otp-button" (click)="sendOTP()">Send OTP</button>
+        </div>
+
+        <!-- Step 2: OTP Input for Verification -->
+        <div *ngIf="otpSent && !otpVerified">
+            <div class="input-group">
+                <label for="otp">Enter OTP</label>
+                <input type="text" id="otp" placeholder="Enter the OTP sent to your email" [(ngModel)]="otp" required />
+            </div>
+            <button class="verify-otp-button" (click)="login()">Login</button>
+
+            <!-- Timer for Resend OTP -->
+            <div class="otp-timer" *ngIf="resendTimer > 0">
+                Resend available in {{ resendTimer }} seconds
+            </div>
+            <button *ngIf="resendTimer <= 0" (click)="sendOTP()" class="resend-otp-button">Resend OTP</button>
+        </div>
+    </div>
+
+    <!-- Success Message -->
+    <div class="login-success-page" *ngIf="loginSuccess">
+        <h2>Logged In Successfully</h2>
+        <p>You will be redirected to the dashboard in 5 seconds.</p>
+        <p>If you are not redirected automatically, <a (click)="navigateToDashboard()">click here</a>.</p>
+    </div>
+</div>

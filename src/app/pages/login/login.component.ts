@@ -46,6 +46,10 @@ export class LoginComponent {
     this.router.navigate(['/forgot_password']);
   }
 
+  navigateToOtpSignIn() {
+    this.router.navigate(['/otp_sign_in']);
+  }
+
   // Toggle password visibility
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;

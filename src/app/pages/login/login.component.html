@@ -39,7 +39,7 @@
 
                 <div class="additional-options">
                     <a class="forgot-password" (click)="navigateToForgotPassword()">Forgot password?</a>
-                    <a class="login-otp" href="#">Login with OTP</a>
+                    <a class="login-otp" (click)="navigateToOtpSignIn()">Login with OTP</a>
                 </div>
 
                 <button class="login-button" type="submit" (click)="login()">Log In</button>
