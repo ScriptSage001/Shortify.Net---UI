@@ -20,9 +20,12 @@ import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 })
 
 export class LoginComponent {
+  usernameOrEmail: string = '';
   username: string = '';
+  email: string = '';
   password: string = '';
   showPassword: boolean = false;
+  isOTPMode: boolean = false;
 
   constructor(
     private router: Router,
@@ -39,15 +42,16 @@ export class LoginComponent {
     this.router.navigate(['/sign_up']);
   }
 
+  navigateToForgotPassword() {
+    this.router.navigate(['/forgot_password']);
+  }
+
   // Toggle password visibility
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
   }
 
-  // Function to handle form submission
-  onLogin() {
-    // Logic for login (could be connected to an API)
-    console.log('Username:', this.username);
-    console.log('Password:', this.password);
+  login() {
+    console.log('Logging in with password:', this.password);
   }
 }
