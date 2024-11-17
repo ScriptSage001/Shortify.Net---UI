@@ -7,6 +7,8 @@ import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
+import { OtpService } from '../../services/otp/otp.service';
+
 @Component({
   selector: 'app-signup',
   standalone: true,
@@ -34,7 +36,8 @@ export class SignupComponent {
 
   constructor(
     private router: Router,
-    private library: FaIconLibrary
+    private library: FaIconLibrary,
+    private service: OtpService
   ) {
     this.library.addIcons(faEye, faEyeSlash);
   }
@@ -54,9 +57,13 @@ export class SignupComponent {
 
   // Function to send OTP
   sendOTP() {
-    // Send OTP to the provided email
-    console.log('OTP sent to:', this.email);
-    this.otpSent = true;
+    this.service.sendVerifyEmailOtp(this.email).subscribe({
+      next: () => {
+        this.otpSent = true;
+      },
+      error: () => {
+        this.otpSent = false;
+      }});
 
     // Start a resend timer
     this.resendTimer = 60;
@@ -65,12 +72,16 @@ export class SignupComponent {
 
   // Function to verify OTP
   verifyOTP() {
-    if (this.otp === '123456') { // Example OTP check, replace with actual API
-      this.otpVerified = true;
-      this.otpSent = false;
-    } else {
-      alert('Invalid OTP');
-    }
+    this.service.validateOtp(this.email, this.otp).subscribe({
+      next: () => {
+        this.otpVerified = true;
+        this.otpSent = false;
+      },
+      error: () => {
+        this.otpVerified = false;
+        this.otpSent = true;
+      }
+    });
   }
 
   // Function to start a resend timer
