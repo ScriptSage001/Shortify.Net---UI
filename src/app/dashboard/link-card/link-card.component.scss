@@ -1,0 +1,52 @@
+.link-card {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    background-color: #f9f9f9;
+
+    .favicon {
+        width: 32px;
+        height: 32px;
+        margin-right: 15px;
+    }
+
+    .link-info {
+        flex-grow: 1;
+
+        h4 {
+            margin: 0;
+            font-size: 16px;
+            color: #333;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        .actions {
+            margin-top: 10px;
+
+            button {
+                background: #007bff;
+                color: #fff;
+                border: none;
+                padding: 5px 10px;
+                margin-right: 5px;
+                border-radius: 5px;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: #0056b3;
+                }
+            }
+        }
+    }
+}

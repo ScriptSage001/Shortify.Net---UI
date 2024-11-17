@@ -6,9 +6,10 @@ import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password
 import { LoginWithOtpComponent } from './pages/login-with-otp/login-with-otp.component';
 
 export const routes: Routes = [
-    {path: '', component: LandingComponent},
-    {path: 'sign_in', component: LoginComponent},
-    {path: 'sign_up', component: SignupComponent},
-    {path: 'forgot_password', component: ForgotPasswordComponent},
-    {path: 'otp_sign_in', component: LoginWithOtpComponent}
+    { path: '', component: LandingComponent },
+    { path: 'sign_in', component: LoginComponent },
+    { path: 'sign_up', component: SignupComponent },
+    { path: 'forgot_password', component: ForgotPasswordComponent },
+    { path: 'otp_sign_in', component: LoginWithOtpComponent },
+    { path: 'dashboard', loadChildren: ()=> import('./dashboard/dashboard.module').then(m => m.DashboardModule) }
 ];

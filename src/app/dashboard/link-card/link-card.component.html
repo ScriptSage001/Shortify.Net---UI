@@ -1,0 +1,11 @@
+<div class="link-card">
+    <img [src]="favicon" alt="Favicon" class="favicon">
+    <div class="link-info">
+        <h4>{{ title }}</h4>
+        <a [href]="shortenedUrl" target="_blank">{{ shortenedUrl }}</a>
+        <div class="actions">
+            <button (click)="copyLink()">Copy</button>
+            <button (click)="shareLink()">Share</button>
+        </div>
+    </div>
+</div>
